@@ -19,14 +19,17 @@ function addTodo({ todo, completed, list }) {
     data.todos.unshift(newtodo);
     return newtodo;
 }
+
 function updateTodo(id, newTodo) {
-    const oldTodo = getTodoById(id);
-    if (oldTodo) {
-        data.todos[id] = { ...oldTodo, ...newTodo };
-        return data.todos[id];
+    const idx = data.todos.findIndex((todo) => todo.id == id);
+
+    if (idx !== -1) {
+        data.todos[idx] = { ...data.todos[idx], ...newTodo };
+        return data.todos[idx];
     }
     return false;
 }
+
 module.exports = {
     getTodos,
     getTodoById,
