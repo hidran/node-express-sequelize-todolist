@@ -4,6 +4,7 @@ async function getTodos() {
     const [result] = await pool.query('SELECT * FROM todos');
     return result;
 }
+
 async function getTodosByListId(list_id) {
     const [result] = await pool.query('SELECT * FROM todos where list_id', [
         list_id,
@@ -44,4 +45,5 @@ module.exports = {
     deleteTodo,
     addTodo,
     updateTodo,
+    getTodosByListId,
 };

@@ -8,9 +8,21 @@ const {
     getLists,
 } = require('../controllers/listsController');
 
+const { getTodosByListId } = require('../controllers/todosController');
 router.get('/', async (req, res) => {
     try {
         const result = await getLists();
+
+        res.json(result);
+    } catch (e) {
+        res.status(500).send(e.toString());
+    }
+});
+
+router.get('/:list_id([0-9]+)/todos', async (req, res) => {
+    try {
+        const result = await getTodosByListId(req.params.list_id);
+
         res.json(result);
     } catch (e) {
         res.status(500).send(e.toString());

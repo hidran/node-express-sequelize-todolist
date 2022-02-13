@@ -1,4 +1,3 @@
-const data = require('../data');
 const pool = require('../db');
 
 async function getLists() {
@@ -11,7 +10,7 @@ async function getListById(id) {
 }
 async function deleteList(id) {
     const [result] = await pool.query('DELETE FROM lists where id=?', [id]);
-    return result;
+    return result.affectedRows;
 }
 async function addList(name) {
     const created_at = new Date();
