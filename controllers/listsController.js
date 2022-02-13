@@ -20,10 +20,10 @@ function addList(name) {
     return list;
 }
 function updateList(id, name) {
-    const oldList = getListById(id);
-    if (oldList) {
-        data.lists[id] = { ...oldList, name };
-        return data.lists[id];
+    const idx = data.lists.findIndex((List) => List.id == id);
+    if (idx > -1) {
+        data.lists[idx] = { ...data.lists[idx], name };
+        return data.lists[idx];
     }
     return false;
 }
