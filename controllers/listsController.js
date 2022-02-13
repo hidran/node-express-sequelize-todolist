@@ -5,13 +5,12 @@ async function getLists() {
     const [result] = await pool.query('SELECT * FROM lists');
     return result;
 }
-function getListById(id) {
-    return data.lists.find((List) => List.id == id);
+async function getListById(id) {
+    const [result] = await pool.query('SELECT * FROM lists where id=?', [id]);
+    return result[0];
 }
 async function deleteList(id) {
-    console.log(id);
     const [result] = await pool.query('DELETE FROM lists where id=?', [id]);
-    console.log(result);
     return result;
 }
 async function addList(name) {
