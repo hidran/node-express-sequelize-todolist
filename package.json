@@ -1,0 +1,23 @@
+{
+  "name": "express-todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hidran/node-express-sequelize-todolist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hidran/node-express-sequelize-todolist/issues"
+  },
+  "homepage": "https://github.com/hidran/node-express-sequelize-todolist#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
