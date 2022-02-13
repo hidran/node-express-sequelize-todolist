@@ -8,8 +8,13 @@ const {
     getLists,
 } = require('../controllers/listsController');
 
-router.get('/', (req, res) => {
-    res.json(getLists());
+router.get('/', async (req, res) => {
+    try {
+        const result = await getLists();
+        res.json(result);
+    } catch (e) {
+        res.status(500).send(e.toString());
+    }
 });
 router.get('/:id([0-9]+)', (req, res) => {
     const result = getListById(req.params.id);

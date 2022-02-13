@@ -1,7 +1,9 @@
 const data = require('../data');
+const pool = require('../db');
 
-function getLists() {
-    return data.lists;
+async function getLists() {
+    const [result] = await pool.query('SELECT * FROM lists');
+    return result;
 }
 function getListById(id) {
     return data.lists.find((List) => List.id == id);
