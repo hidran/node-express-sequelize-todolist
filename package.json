@@ -19,6 +19,7 @@
   "homepage": "https://github.com/hidran/node-express-sequelize-todolist#readme",
   "dependencies": {
     "express": "^4.17.2",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
   }
 }
