@@ -6,7 +6,8 @@ app.use(express.json());
 //app.use('/todos/:id',logger);
 const todosRoutes = require('./routes/todos');
 const listsRoutes = require('./routes/lists');
-
+const User = require('./models').User;
+User.sync();
 app.use('/todos', todosRoutes);
 app.use('/lists', listsRoutes);
 
