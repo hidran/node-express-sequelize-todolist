@@ -1,6 +1,7 @@
 const pool = require('../db');
-
+const List = require('../models').List;
 async function getLists() {
+
     const [result] = await pool.query('SELECT * FROM lists');
     return result;
 }

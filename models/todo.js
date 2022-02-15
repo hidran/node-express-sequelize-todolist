@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            Todo.belongsTo(models.List, { foreignKey: 'listId' })
         }
     }
     Todo.init({
@@ -26,8 +26,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             index: true,
             references: {
-                Model: List,
-                key: 'id'
+                model: 'lists'
             }
         },
         completed: DataTypes.BOOLEAN

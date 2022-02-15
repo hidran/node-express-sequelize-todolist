@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            List.belongsTo(models.User, { foreignKey: 'userId' });
         }
     }
-    console.log('list', List.name);
+
     List.init({
         name: {
             type: DataTypes.STRING,
@@ -29,9 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             index: true,
             references: {
-                model: {
-                    tableName: 'users'
-                }
+                model: 'users'
             }
         }
     }

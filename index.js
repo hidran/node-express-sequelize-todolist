@@ -7,7 +7,15 @@ app.use(express.json());
 const todosRoutes = require('./routes/todos');
 const listsRoutes = require('./routes/lists');
 const User = require('./models').User;
-User.sync();
+const List = require('./models').List;
+const Todo = require('./models').List;
+const { sequelize } = require('./models');
+(
+    async () => {
+        await sequelize.sync({ alert: true });
+    }
+)();
+//User.sync();
 app.use('/todos', todosRoutes);
 app.use('/lists', listsRoutes);
 
