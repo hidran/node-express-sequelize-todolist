@@ -4,7 +4,7 @@ const FileStore = require('session-file-store')(session);
 const fileStoreOptions = {};
 const DEFAULT_ENV = process.env.NODE_ENV || 'development';
 const SESSION_NAME = process.env.SESSION_NAME || 'todolist';
-const MAX_AGE = process.env.MAX_AGE || 60 * 60 * 1000;
+const MAX_AGE = Number(process.env.MAX_AGE) || 60 * 60 * 1000;
 const SECRET = process.env.SECRET || 'Our beautiful secret';
 const List = require('../models').List;
 const redirectHome = (req, resp, next) => {
