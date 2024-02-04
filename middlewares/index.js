@@ -35,7 +35,7 @@ const setSession = () => {
         store: fileStoreInstance,
         cookie: {
             maxAge: MAX_AGE,
-            secure: DEFAULT_ENV === 'production',
+            secure: false, // DEFAULT_ENV === 'production',
         },
         secret: SECRET,
         resave: false,
