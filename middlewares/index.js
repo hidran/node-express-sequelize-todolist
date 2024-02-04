@@ -33,9 +33,10 @@ const setSession = () => {
     });
     return session({
         store: fileStoreInstance,
+        proxy: true,
         cookie: {
             maxAge: MAX_AGE,
-            secure: false, // DEFAULT_ENV === 'production',
+            secure: DEFAULT_ENV === 'production',
         },
         secret: SECRET,
         resave: false,
