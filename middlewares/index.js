@@ -1,7 +1,7 @@
 const methodOverride = require('method-override');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
-const fileStoreOptions = {};
+const fileStoreOptions = { path: '/tmp' };
 const DEFAULT_ENV = process.env.NODE_ENV || 'development';
 const SESSION_NAME = process.env.SESSION_NAME || 'todolist';
 const MAX_AGE = Number(process.env.MAX_AGE) || 60 * 60 * 1000;
@@ -17,7 +17,7 @@ const redirectHome = (req, resp, next) => {
 };
 
 const redirectLogin = (req, resp, next) => {
-    console.log(req.session);
+    console.log(req.session.user);
     if (req.session && !req.session.user) {
         //   next()
         resp.redirect('/auth/login');
@@ -38,7 +38,7 @@ const setSession = () => {
         },
         secret: SECRET,
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false,
         name: SESSION_NAME,
     });
 };
