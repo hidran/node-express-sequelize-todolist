@@ -17,7 +17,7 @@ const redirectHome = (req, resp, next) => {
 };
 
 const redirectLogin = (req, resp, next) => {
-    // console.log(req.session.user)
+    console.log(req.session);
     if (req.session && !req.session.user) {
         //   next()
         resp.redirect('/auth/login');
@@ -38,7 +38,7 @@ const setSession = () => {
         },
         secret: SECRET,
         resave: false,
-        saveUninitialized: false,
+        saveUninitialized: true,
         name: SESSION_NAME,
     });
 };
