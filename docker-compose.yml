@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+    app:
+        image: node:18
+        container_name: expressionist_app
+        working_dir: /app
+        command: sh -c "npm install && npm run start"
+        volumes:
+            - ./:/app
+        ports:
+            - "3000:3000"
+
+        depends_on:
+            - db
+        environment:
+            - DB_HOST=db
+            - DB_USER=root
+            - DB_PASSWORD=hidran
+            - DB_NAME=sequelizetodolist
+            - DB_DIALECT=mysql
+            - DB_CONN=mysql://root:hidran@db:3306/sequelizetodolist
+
+    db:
+        container_name: mysql_container
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: hidran
+            MYSQL_DATABASE: sequelizetodolist
+        volumes:
+            - db_data:/var/lib/mysql
+        ports:
+            - '3307:3306'
+
+volumes:
+    db_data:
